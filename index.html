@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+
+div.hovered{
+  background:black;
+}
+    </style>
+</head>
+<body>
+    <div class="container">
+     <div class="content"></div>
+
+    </div>
+    <script>
+        const container = document.querySelector(".container");
+  // set variable value on container
+
+
+
+       const btn = document.createElement("button");
+  btn.innerText = "Choose New grid";
+  btn.style="width:100%"
+  btn.addEventListener("click",function(e){
+const rows = prompt("Enter the number of rows  for the grid");
+const cols = prompt("Enter the number of cols  for the grid");
+if(rows>0 && cols>0 &&rows<100&&cols<100){
+   makeRows(rows, cols);
+
+}else{
+  alert("Enter Valid entries or Maximum grid possible is 100")
+}
+  })
+  container.appendChild(btn);
+ 
+
+  const br = document.createElement("br")
+  container.appendChild(br);
+
+function makeRows(rows, cols) {
+
+  const contentNew = document.querySelector('.content');
+  contentNew.style.setProperty("display","flex")
+  contentNew.style.setProperty("flex-wrap","wrap")
+  contentNew.style.setProperty("width",(cols*(40+2))+'px')
+  let cell="";
+  const mul = rows * cols; 
+  contentNew.innerHTML = "";
+  for (let c = 0; c < mul; c++) {
+    cell = document.createElement("div");
+    cell.innerText = (c + 1);
+    cell.style.cssText = "width:40px;height:40px;border: 1px solid black;";
+    cell.addEventListener("mouseenter",function(e){
+  e.target.className = "hovered";
+    })
+    cell.addEventListener("mouseleave",function(e){
+      e.target.className = "";
+    })
+  
+        contentNew.appendChild(cell).className = "grid-item";
+      };
+    
+
+    };
+
+// makeRows(16, 16);
+
+
+
+
+    </script>
+</body>
+</html>
