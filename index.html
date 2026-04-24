@@ -55,10 +55,10 @@ function makeRows(rows, cols) {
     cell.innerText = (c + 1);
     cell.style.cssText = "width:40px;height:40px;border: 1px solid black;";
     cell.addEventListener("mouseenter",function(e){
-  e.target.className = "hovered";
+  e.target.classList.add("hovered");
     })
     cell.addEventListener("mouseleave",function(e){
-      e.target.className = "";
+      e.target.classList.remove("hovered");
     })
   
         contentNew.appendChild(cell).className = "grid-item";
