@@ -26,11 +26,11 @@ div.hovered{
   btn.innerText = "Choose New grid";
   btn.style="width:100%"
   btn.addEventListener("click",function(e){
-let rows = prompt("Enter the number of rows  for the grid");
-let cols = prompt("Enter the number of cols  for the grid");
-rows = parseInt(rows, 10);
-cols = parseInt(cols, 10);
-if(!isNaN(rows) && !isNaN(cols) && rows>0 && cols>0 && rows<=100 && cols<=100){
+const rowsInput = prompt("Enter the number of rows  for the grid");
+const colsInput = prompt("Enter the number of cols  for the grid");
+const rows = parseInt(rowsInput, 10);
+const cols = parseInt(colsInput, 10);
+if(!isNaN(rows) && !isNaN(cols) && rows>0 && cols>0 &&rows<100&&cols<100){
    makeRows(rows, cols);
 
 }else{
@@ -52,6 +52,7 @@ function makeRows(rows, cols) {
   let cell="";
   const mul = rows * cols; 
   contentNew.innerHTML = "";
+  const fragment = document.createDocumentFragment();
   for (let c = 0; c < mul; c++) {
     cell = document.createElement("div");
     cell.innerText = (c + 1);
@@ -63,9 +64,10 @@ function makeRows(rows, cols) {
       e.target.classList.remove("hovered");
     })
   
-        contentNew.appendChild(cell).classList.add("grid-item");
+        cell.className = "grid-item";
+        fragment.appendChild(cell);
       };
-    
+    contentNew.appendChild(fragment);
 
     };
 
