@@ -26,9 +26,11 @@ div.hovered{
   btn.innerText = "Choose New grid";
   btn.style="width:100%"
   btn.addEventListener("click",function(e){
-const rows = prompt("Enter the number of rows  for the grid");
-const cols = prompt("Enter the number of cols  for the grid");
-if(rows>0 && cols>0 &&rows<100&&cols<100){
+let rows = prompt("Enter the number of rows  for the grid");
+let cols = prompt("Enter the number of cols  for the grid");
+rows = parseInt(rows, 10);
+cols = parseInt(cols, 10);
+if(!isNaN(rows) && !isNaN(cols) && rows>0 && cols>0 && rows<=100 && cols<=100){
    makeRows(rows, cols);
 
 }else{
@@ -55,13 +57,13 @@ function makeRows(rows, cols) {
     cell.innerText = (c + 1);
     cell.style.cssText = "width:40px;height:40px;border: 1px solid black;";
     cell.addEventListener("mouseenter",function(e){
-  e.target.className = "hovered";
+  e.target.classList.add("hovered");
     })
     cell.addEventListener("mouseleave",function(e){
-      e.target.className = "";
+      e.target.classList.remove("hovered");
     })
   
-        contentNew.appendChild(cell).className = "grid-item";
+        contentNew.appendChild(cell).classList.add("grid-item");
       };
     
 
